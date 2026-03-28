@@ -15,9 +15,12 @@ const AuthLogin = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('btn is working');
+        // console.log('btn is working');
         console.log(formData);
-
+        setFormData({
+            email: '',
+            password: ''
+        })
 
     }
 

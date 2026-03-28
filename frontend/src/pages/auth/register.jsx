@@ -1,28 +1,30 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import { registerUser } from "../../store/auth-slice";
+
+const initialState = {
+    name: "",
+    email: "",
+    password: "",
+}
 
 const AuthRegister = () => {
     const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        password: "",
-    });
+    const [formData, setFormData] = useState(initialState);
+    const dispatch = useDispatch();
 
     const handleRegisterForm = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (e) => {
-        console.log("btn is working");
+        // console.log("btn is working");
         e.preventDefault()
+
+        dispatch(registerUser(formData))
         console.log(formData);
-        setFormData({
-            name: "",
-            email: "",
-            password: "",
-        })
 
     };
 
